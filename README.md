@@ -16,7 +16,7 @@
 
 1. Download or clone the repo:
    ```bash
-   git clone https://github.com/yourusername/Keyframe.git
+   git clone https://github.com/lenlenlL6/Keyframe.git
    ```
 
 2. Add the `Keyframe/` folder to your Love2D project.
