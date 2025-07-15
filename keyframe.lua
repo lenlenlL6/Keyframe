@@ -115,12 +115,13 @@ function animator_:on(state, name, callback)
 end
 
 function animator_:setState(state, frame)
-    frame = frame or 1
-
     self.currentState = state
-    self.position = frame
-    self.timer = 0
-    self.interval = self.states[state].delay
+
+    if frame then
+        self.position = frame
+        self.timer = 0
+        self.interval = self.states[state].delay
+    end
 end
 
 function animator_:pause() self.paused = true end
