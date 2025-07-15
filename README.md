@@ -84,6 +84,8 @@ end
 - `animator:getStateFrame()`
 - `animator:pause()`
 - `animator:resume()`
+- `animator:lock()`
+- `animator:unlock()` 
 
 ## 📝 License
 
