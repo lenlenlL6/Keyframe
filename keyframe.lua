@@ -30,7 +30,8 @@ local animator_ = {
     timer = 0,
     interval = 0,
     position = 0,
-    currentState = ""
+    currentState = "",
+    locked = false
 }
 
 function animator_:new(file)
@@ -98,6 +99,9 @@ function animator_:draw(x, y, r, sx, sy, ox, oy)
     love.graphics.draw(self.images[state.image], state.quad[self.position], x, y, r, sx, sy, ox, oy)
 end
 
+function animator_:lock() self.locked = true end
+function animator_:unlock() self.locked = false end
+
 function animator_:setEvent(frame, state, name, delay)
     delay = delay or 0
 
@@ -115,6 +119,8 @@ function animator_:on(state, name, callback)
 end
 
 function animator_:setState(state, frame)
+    if self.locked then return end
+
     self.currentState = state
 
     if frame then
