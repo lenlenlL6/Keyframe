@@ -24,19 +24,18 @@ SOFTWARE.
 
 --]]
 
-local animator_ = {
-    images = {},
-    states = {},
-    timer = 0,
-    interval = 0,
-    position = 0,
-    currentState = "",
-    locked = false
-}
+local animator_ = {}
 
 function animator_:new(file)
-    local object = {}
-    setmetatable(object, {__index = animator_})
+    local object = {
+        images = {},
+        states = {},
+        timer = 0,
+        interval = 0,
+        position = 0,
+        currentState = "",
+        locked = false
+    }
     local data = require(file)
         for name, image in pairs(data.images) do
         object.images[name] = love.graphics.newImage(image)
@@ -64,6 +63,7 @@ function animator_:new(file)
     object.currentState = data.defaultState
     object.interval = object.states[object.currentState].delay
     if object.states[object.currentState].playMode == "reversing" then object.position = #object.states[object.currentState].quad + 1 end
+    setmetatable(object, {__index = animator_})
     return object
 end
 
